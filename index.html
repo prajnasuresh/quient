@@ -9,6 +9,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,300&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/04f2921f9f.js" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 </head>
 <body>
@@ -97,6 +99,47 @@ the development of a holistic personality is also necessary</section>
 
 </section>
 
+<section class="contact">
+
+    <div class="modal-popup">
+        <div class="modal">
+            <button class="close_btn" onClick="handleClose()">
+                    <i class="material-icons">close</i>
+            </button>
+            <h3 class="feedback_message"></h3>
+        </div>
+    </div>
+    <div class="container">
+        <h1>Contact us</h1>
+        <p>Have an inquiry or some feedback for us?
+        Fill out the form below for contact our team.</p>
+        <div class="contact_form">
+        <div class="field">
+           
+            <input type="text" name="fname" id="fname" placeholder="First Name" autocomplete="off">
+        </div>
+        <div class="field">
+           
+            <input type="text" name="lname" id="lname" placeholder="Last name" autocomplete="off">
+        </div>
+        <div class="field">
+           
+            <input type="text" name="email" id="email" placeholder="Email address" autocomplete="off">
+        </div>
+
+        <div class="textarea">
+            
+            <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+ 
+        </div>
+
+        <button class="send_message">
+            Contact
+        </button>
+        </div>
+    </div>
+</section>
+
 <section class="footer">
     <h4>About Us</h4>
     <span id="logo">
@@ -123,6 +166,10 @@ the development of a holistic personality is also necessary</section>
     </div>
 </section>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js" integrity="sha512-lTLt+W7MrmDfKam+r3D2LURu0F47a3QaW5nF0c6Hl0JDZ57ruei+ovbg7BrZ+0bjVJ5YgzsAWE+RreERbpPE1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
 <!--<a href="https://wa.me/919123456789" class="whatsapp" target="_blank"><i class="fa fa-whatsapp status-icon"></i></a>-->
 
 
@@ -137,6 +184,68 @@ the development of a holistic personality is also necessary</section>
             navLinks.Style.right="200px";
         }
     </script>
+
+
+
+<script>
+    const send_message_btn = document.querySelector('.send_message');
+    const modal = document.querySelector('.modal-popup');
+  
+
+   send_message_btn.addEventListener('click',()=>{
+    const fname = document.querySelector('#fname').value;
+    const lname = document.querySelector('#lname').value;
+    const email = document.querySelector('#email').value;
+    const message = document.querySelector('#message').value;
+
+       console.log(fname,lname,email,message)
+    if(!fname || !lname || !email || !message){
+        modal.classList.add('modal_enable');
+        document.querySelector('.feedback_message').textContent = "All fields required!";
+    }
+    else{
+        axios.post('http://localhost:5000/contact',{
+            fname,
+            lname,
+            email,
+            message
+        }).then((response)=>{
+            console.log(response);
+            const {message} = response.data;
+            document.querySelector('#fname').value = "";
+            document.querySelector('#lname').value = "";
+            document.querySelector('#email').value = "";
+            document.querySelector('#message').value = "";
+            
+            modal.classList.add('modal_enable');
+            document.querySelector('.feedback_message').textContent = message;
+
+
+
+
+
+
+        }).catch((e)=>{
+            console.log(e.message);
+        })
+        
+    }
+   })
+
+
+
+   const handleClose = ()=>{
+    document.querySelector('.modal-popup').classList.remove('modal_enable');
+   }
+
+
+   modal.addEventListener('click',(e)=>{
+       if(e.target.classList.contains("modal-popup")){
+           document.querySelector('.modal-popup').classList.remove('modal_enable');
+
+       }
+   })
+</script>
 
 
     

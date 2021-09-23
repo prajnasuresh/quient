@@ -398,3 +398,101 @@ img
     
 
 
+.modal-popup{
+    width: 100%;
+    height: 100vh;
+    background-color: #2626263b;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+.modal_enable{
+    display: flex;
+}
+
+.modal{
+    width: 350px;
+    height: 155px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 4px;
+}
+
+.close_btn{
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact_form{
+    width: 75%;
+    padding-top: 12px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.field{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 56%;
+    margin-bottom: 11px;
+    margin-top: 11px;
+    cursor: pointer;
+}
+.field input{
+    width: 100%;
+    height: 49px;
+    padding-left: 12px;
+    outline: 0;
+    cursor: pointer;
+}
+
+
+.textarea{
+    width: 56%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+}
+.textarea textarea{
+    width: 100%;
+    height: 85px;
+    outline: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+    resize: none;
+    cursor: pointer;
+}
+.send_message{
+    width: 56%;
+    height: 49px;
+    margin-top: 10px;
+    background-color: #f44336;
+    border: 1px solid transparent;
+    color: #fff;
+    cursor: pointer;
+}
